@@ -43,7 +43,9 @@ class StickiesComponent {
 
   }
   clearStickies() {
-
+    this._stickies = [];
+    this._storage.removeItem('stickies');
+    this.toHTML();
   }
   getStickiesFromStorage() {
     this._stickies = [];
