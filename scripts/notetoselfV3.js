@@ -40,6 +40,10 @@ class StickiesComponent {
     this.toHTML();
   }
   deleteSticky(key) {
+    const index = this._stickies.findIndex(s => s.id === key);
+    this._stickies.splice(index, 1);
+    this.setStickiesInStorage();
+    this.toHTML();
 
   }
   clearStickies() {
