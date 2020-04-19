@@ -49,7 +49,12 @@ class StickiesComponent {
 
   }
   setStickiesInStorage() {
-
+    try {
+      this._storage.setItem('stickies', JSON.stringify(this._stickies));
+    } catch (e) {
+      if (e == QUOTA_EXCEEDED_ERR)
+        alert('Out of storage!');
+    }
   }
   toHTML() {
     document.getElementById('stickies').innerHTML = '';
