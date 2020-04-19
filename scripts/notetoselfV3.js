@@ -34,7 +34,10 @@ class StickiesComponent {
   }
 
   addSticky(note, color) {
-
+    const sticky = new Sticky(note, color);
+    this._stickies.push(sticky);
+    this.setStickiesInStorage();
+    this.toHTML();
   }
   deleteSticky(key) {
 
