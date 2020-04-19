@@ -4,7 +4,6 @@ class Sticky {
     this.note = note;
     this.color = color;
   }
-
   get id() {
     return this._id;
   }
@@ -14,8 +13,6 @@ class Sticky {
   get color() {
     return this._color;
   }
-
-
   set note(value) {
     this._note = value;
   }
@@ -29,21 +26,28 @@ class StickiesComponent {
     this._storage = storage;
     this._stickies = [];
   }
-
   get storage() {
     return this._storage;
   }
-
   get stickies() {
     return this._stickies;
   }
 
-  addSticky(note, color) {}
+  addSticky(note, color) {
 
-  deleteSticky(key) {}
+  }
+  deleteSticky(key) {
 
-  clearStickies() {}
+  }
+  clearStickies() {
 
+  }
+  getStickiesFromStorage() {
+
+  }
+  setStickiesInStorage() {
+
+  }
   toHTML() {
     document.getElementById('stickies').innerHTML = '';
     this._stickies.map(sticky => {
@@ -60,11 +64,6 @@ class StickiesComponent {
       };
     });
   }
-
-  getStickiesFromStorage() {}
-
-  setStickiesInStorage() {}
-
   storageEventHandler(event) {
     alert('Storage has been changed on another page');
     this.getStickiesFromStorage();
@@ -73,13 +72,12 @@ class StickiesComponent {
 }
 
 function init() {
-  const stickiesComponent = new StickiesComponent(window.localStorage);
+  const stickiesComponent = new StickiesComponent(localStorage);
   const addButton = document.getElementById('add');
   const clearButton = document.getElementById('clear');
 
   if (!stickiesComponent.storage) {
-    //browser ondersteunt geen storage
-    alert('no storage available. ');
+    alert('browser ondersteunt geen storage');
     addButton.disabled = true;
     clearButton.disabled = true;
     return;
@@ -90,10 +88,7 @@ function init() {
   addButton.onclick = function () {
     const noteText = document.getElementById('notetext');
     const noteColor = document.getElementById('notecolor');
-    stickiesComponent.addSticky(
-      noteText.value,
-      noteColor.value
-    );
+    stickiesComponent.addSticky(noteText.value, noteColor.value);
     noteText.value = '';
   };
 
