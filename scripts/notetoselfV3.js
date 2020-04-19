@@ -46,6 +46,11 @@ class StickiesComponent {
 
   }
   getStickiesFromStorage() {
+    this._stickies = [];
+    if (this._storage.getItem('stickies')) {
+      this._stickies = JSON.parse(this._storage.getItem('stickies'))
+        .map(s => new Sticky(s._note, s._color));
+    }
 
   }
   setStickiesInStorage() {
